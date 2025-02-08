@@ -1,12 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useEffect, useState } from "react"
 import { secondsToHumanReadable } from "../utils"
-
-interface Navigator {
-  getBattery(): Promise<Battery>
-}
 
 declare global {
   interface Navigator {
@@ -107,6 +102,7 @@ export function useBattery() {
     }
 
     getBattery()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return batteryState
