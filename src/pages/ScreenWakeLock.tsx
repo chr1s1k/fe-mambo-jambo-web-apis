@@ -55,7 +55,7 @@ export default function ScreenWakeLock() {
             Turn Screen Wake Lock {released === false ? "OFF" : "ON"}
           </button>
           {/* <div className="mt-8">
-            <label htmlFor="wakeLock" className="flex items-center gap-2">
+            <label htmlFor="wakeLock" className="flex items-center gap-2 cursor-pointer">
               <input
                 id="wakeLock"
                 type="checkbox"
