@@ -1,5 +1,6 @@
 import clsx from "clsx"
 import { useEffect, useRef, useState } from "react"
+import { ModalQR } from "../components"
 
 let playingOnHide = false
 const initialCountdownValue = 99
@@ -67,7 +68,13 @@ export default function PageVisibility() {
 
   return (
     <>
-      <h1>Page Visibility API</h1>
+      <div className="flex flex-wrap gap-2 items-center mb-6">
+        <h1>Page Visibility API</h1>
+        <ModalQR
+          imageUrl="/assets/images/page-visibility-qrcode.png"
+          url="https://fe-mambo-jambo-web-apis.vercel.app/page-visibility"
+        />
+      </div>
       <section className="min-h-svh">
         <h2 className="text-2xl mb-4">Music player</h2>
         <div className="mb-4">
@@ -86,6 +93,7 @@ export default function PageVisibility() {
         </div>
         <audio src="/assets/sw-the-imperial-march.mp3" className="w-full" ref={audio} controls />
       </section>
+      {/* ----------------------------------------------------------------------------------- */}
       <section className="min-h-svh">
         <h2 className="text-2xl mb-4">Countdown</h2>
         <div className="mb-4">

@@ -1,5 +1,6 @@
 import { useRef, useState } from "react"
 import clsx from "clsx"
+import { ModalQR } from "../components"
 
 export default function ScreenWakeLock() {
   const isSupported = "wakeLock" in navigator
@@ -34,7 +35,13 @@ export default function ScreenWakeLock() {
 
   return (
     <>
-      <h1>Screen Wake Lock API</h1>
+      <div className="flex flex-wrap gap-2 items-center mb-6">
+        <h1>Screen Wake Lock API</h1>
+        <ModalQR
+          imageUrl="/assets/images/screen-wake-lock-qrcode.png"
+          url="https://fe-mambo-jambo-web-apis.vercel.app/screen-wake-lock"
+        />
+      </div>
       <p className="mb-8">
         {isSupported ? (
           <>
@@ -49,6 +56,7 @@ export default function ScreenWakeLock() {
       {isSupported ? (
         <>
           <button
+            type="button"
             className={clsx("btn btn-lg", released === false ? "btn-error" : "btn-primary")}
             onClick={released === false ? releaseWakeLock : requestWakeLock}
           >

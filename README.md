@@ -2,6 +2,8 @@
 
 A few examples of Web APIs presented at FE Mambo Jambo.
 
+Live demo => [https://fe-mambo-jambo-web-apis.vercel.app/](https://fe-mambo-jambo-web-apis.vercel.app/)
+
 ## Setup
 
 1. Install [bun](https://bun.sh/docs/installation)
