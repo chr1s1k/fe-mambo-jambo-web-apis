@@ -110,3 +110,19 @@ h1 {
   /* animation: slideInLeft 0.5s; */
   animation: scaleIn 0.5s;
 }
+
+.tab-active {
+  @apply relative;
+}
+
+.tab-active::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 0.125rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 184 166 / var(--tw-bg-opacity, 1));
+  content: " ";
+  view-transition-name: tab-active-indicator;
+}

@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import { MouseEvent, useRef, useState } from "react"
 import { flushSync } from "react-dom"
 
@@ -50,6 +51,22 @@ export default function ViewTransition() {
     justAddedRef.current.style.viewTransitionName = `item-${newId}`
   }
 
+  // -------------------------------------------------------------------------
+  const [activeTab, setActiveTab] = useState(0)
+
+  const changeActiveTab = (idx: number) => {
+    if (!document.startViewTransition) {
+      setActiveTab(idx)
+      return
+    }
+
+    document.startViewTransition(() => {
+      flushSync(() => {
+        setActiveTab(idx)
+      })
+    })
+  }
+
   return (
     <>
       <div className="flex flex-wrap gap-2 items-center mb-6">
@@ -93,6 +110,35 @@ export default function ViewTransition() {
             </li>
           ))}
         </ul>
+      </section>
+      <section className="min-h-svh">
+        <h2 className="text-2xl mb-4">Tabs active indicator</h2>
+        <div role="tablist" className="tabs tabs-bordered tabs-lg">
+          <button
+            type="button"
+            role="tab"
+            className={clsx("tab", { "tab-active": activeTab === 0 })}
+            onClick={() => changeActiveTab(0)}
+          >
+            Tab 1
+          </button>
+          <button
+            type="button"
+            role="tab"
+            className={clsx("tab", { "tab-active": activeTab === 1 })}
+            onClick={() => changeActiveTab(1)}
+          >
+            Tab 2
+          </button>
+          <button
+            type="button"
+            role="tab"
+            className={clsx("tab", { "tab-active": activeTab === 2 })}
+            onClick={() => changeActiveTab(2)}
+          >
+            Tab 3
+          </button>
+        </div>
       </section>
     </>
   )
