@@ -52,3 +52,61 @@ h1 {
     background-color: #f9f9f9;
   }
 }
+
+@keyframes scaleOut {
+  from {
+    transform: translate(0, 0);
+    scale: 1;
+    opacity: 1;
+  }
+  to {
+    transform: translate(0, -50px);
+    scale: 1.1;
+    opacity: 0;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: translate(0, -50px);
+    scale: 1.1;
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0);
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+::view-transition-old(item-active) {
+  animation: scaleOut 0.5s;
+  /* animation: slideOutLeft 0.5s; */
+}
+
+::view-transition-new(item-active) {
+  /* animation: slideInLeft 0.5s; */
+  animation: scaleIn 0.5s;
+}
