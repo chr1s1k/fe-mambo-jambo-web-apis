@@ -1,11 +1,27 @@
 import clsx from "clsx"
 import { MouseEvent, useRef, useState } from "react"
 import { flushSync } from "react-dom"
+import { Tab } from "../components"
 
 // generate some items
 const ITEMS = Array.from({ length: 5 }, () => ({ id: crypto.randomUUID(), justAdded: false }))
 
 export default function ViewTransition() {
+  const [activeTab, setActiveTab] = useState(0)
+
+  const changeActiveTab = (idx: number) => {
+    if (!document.startViewTransition) {
+      setActiveTab(idx)
+      return
+    }
+
+    document.startViewTransition(() => {
+      flushSync(() => setActiveTab(idx))
+    })
+  }
+
+  // -------------------------------------------------------------------------
+
   const [items, setItems] = useState(ITEMS)
   const justAddedRef = useRef<HTMLLIElement>(null)
 
@@ -22,9 +38,7 @@ export default function ViewTransition() {
     }
 
     document.startViewTransition(() => {
-      flushSync(() => {
-        setItems((prevItems) => prevItems.filter(({ id }) => id !== idToRemove))
-      })
+      flushSync(() => setItems((prevItems) => prevItems.filter(({ id }) => id !== idToRemove)))
     })
   }
 
@@ -37,9 +51,7 @@ export default function ViewTransition() {
     }
 
     const transition = document.startViewTransition(() => {
-      flushSync(() => {
-        setItems((prevItems) => [{ id: newId, justAdded: true }, ...prevItems])
-      })
+      flushSync(() => setItems((prevItems) => [{ id: newId, justAdded: true }, ...prevItems]))
     })
 
     // wait for the transition to be finished
@@ -51,27 +63,25 @@ export default function ViewTransition() {
     justAddedRef.current.style.viewTransitionName = `item-${newId}`
   }
 
-  // -------------------------------------------------------------------------
-  const [activeTab, setActiveTab] = useState(0)
-
-  const changeActiveTab = (idx: number) => {
-    if (!document.startViewTransition) {
-      setActiveTab(idx)
-      return
-    }
-
-    document.startViewTransition(() => {
-      flushSync(() => {
-        setActiveTab(idx)
-      })
-    })
-  }
-
   return (
     <>
       <div className="flex flex-wrap gap-2 items-center mb-6">
         <h1>View Transition API</h1>
       </div>
+      <section className="min-h-svh">
+        <h2 className="text-2xl mb-4">Tabs active indicator</h2>
+        <div role="tablist" className="tabs tabs-bordered tabs-lg">
+          <Tab isActive={activeTab === 0} onClick={() => changeActiveTab(0)}>
+            Tab 1
+          </Tab>
+          <Tab isActive={activeTab === 1} onClick={() => changeActiveTab(1)}>
+            Tab 2
+          </Tab>
+          <Tab isActive={activeTab === 2} onClick={() => changeActiveTab(2)}>
+            Tab 3
+          </Tab>
+        </div>
+      </section>
       <section className="min-h-svh">
         <div className="flex mb-4 items-center justify-between">
           <h2 className="text-2xl">List</h2>
@@ -110,35 +120,6 @@ export default function ViewTransition() {
             </li>
           ))}
         </ul>
-      </section>
-      <section className="min-h-svh">
-        <h2 className="text-2xl mb-4">Tabs active indicator</h2>
-        <div role="tablist" className="tabs tabs-bordered tabs-lg">
-          <button
-            type="button"
-            role="tab"
-            className={clsx("tab", { "tab-active": activeTab === 0 })}
-            onClick={() => changeActiveTab(0)}
-          >
-            Tab 1
-          </button>
-          <button
-            type="button"
-            role="tab"
-            className={clsx("tab", { "tab-active": activeTab === 1 })}
-            onClick={() => changeActiveTab(1)}
-          >
-            Tab 2
-          </button>
-          <button
-            type="button"
-            role="tab"
-            className={clsx("tab", { "tab-active": activeTab === 2 })}
-            onClick={() => changeActiveTab(2)}
-          >
-            Tab 3
-          </button>
-        </div>
       </section>
     </>
   )

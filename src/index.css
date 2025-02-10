@@ -115,6 +115,8 @@ h1 {
   @apply relative;
 }
 
+/* TODO: fix colors */
+
 .tab-active::after {
   position: absolute;
   left: 0;
