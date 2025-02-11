@@ -30,7 +30,7 @@ export default function BatteryStatus() {
         <>
           <div className="text-center">
             <div className="inline-flex items-center space-x-1 mb-4">
-              <div className="relative w-32 h-12 border-2 border-white rounded-md overflow-hidden">
+              <div className="relative w-32 h-12 border-2 border-gray-900 dark:border-white rounded-md overflow-hidden">
                 <div
                   className={clsx("absolute top-0 left-0 h-full", {
                     "bg-green-500": level > 50,
@@ -40,7 +40,7 @@ export default function BatteryStatus() {
                   style={{ width: `${level}%` }}
                 ></div>
               </div>
-              <div className="w-2 h-6 bg-white rounded-r-md"></div>
+              <div className="w-2 h-6 bg-gray-900 dark:bg-white rounded-r-md"></div>
             </div>
           </div>
           <div className="text-center">

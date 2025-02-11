@@ -1,10 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-@theme {
-  --primary: #ffa800;
-}
-
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -18,6 +14,19 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --color-primary-custom: #ffa800;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    @apply text-gray-800 bg-white;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  a {
+    @apply text-[var(--color-primary-custom)];
+  }
 }
 
 #root {
@@ -25,7 +34,7 @@
 }
 
 a {
-  @apply font-medium text-[var(--primary)];
+  @apply font-medium;
 }
 
 a:hover {
@@ -38,19 +47,6 @@ body {
 
 h1 {
   @apply text-5xl;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
 
 @keyframes scaleOut {
@@ -111,20 +107,6 @@ h1 {
   animation: scaleIn 0.5s;
 }
 
-.tab-active {
-  @apply relative;
-}
-
-/* TODO: fix colors */
-
 .tab-active::after {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 0.125rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(20 184 166 / var(--tw-bg-opacity, 1));
-  content: " ";
   view-transition-name: tab-active-indicator;
 }

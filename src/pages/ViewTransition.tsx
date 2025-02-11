@@ -1,4 +1,3 @@
-import clsx from "clsx"
 import { MouseEvent, useRef, useState } from "react"
 import { flushSync } from "react-dom"
 import { Tab } from "../components"
@@ -70,7 +69,7 @@ export default function ViewTransition() {
       </div>
       <section className="min-h-svh">
         <h2 className="text-2xl mb-4">Tabs active indicator</h2>
-        <div role="tablist" className="tabs tabs-bordered tabs-lg">
+        <div role="tablist" className="tabs tabs-bordered tabs-xl">
           <Tab isActive={activeTab === 0} onClick={() => changeActiveTab(0)}>
             Tab 1
           </Tab>
@@ -92,7 +91,7 @@ export default function ViewTransition() {
         <ul className="list rounded-box">
           {items.map((item) => (
             <li
-              className="list-row items-center hover:bg-gray-700 transition"
+              className="list-row items-center dark:hover:bg-gray-700 hover:bg-gray-300 transition"
               key={item.id}
               style={{ viewTransitionName: item.justAdded ? "item-active" : `item-${item.id}` }}
               data-id={item.id}
