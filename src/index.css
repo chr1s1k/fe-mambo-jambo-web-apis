@@ -49,6 +49,22 @@ h1 {
   @apply text-5xl;
 }
 
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes slideFromRight {
+  from { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes slideToLeft {
+  to { transform: translateX(-100%); opacity: 0; }
+}
+
 @keyframes scaleOut {
   from {
     transform: translate(0, 0);
@@ -99,14 +115,31 @@ h1 {
 
 ::view-transition-old(item-active) {
   animation: scaleOut 0.5s;
-  /* animation: slideOutLeft 0.5s; */
+  /* animation: slideToLeft 0.5s; */
 }
 
 ::view-transition-new(item-active) {
-  /* animation: slideInLeft 0.5s; */
   animation: scaleIn 0.5s;
+  /* animation: slideFromRight 0.5s; */
 }
 
 .tab-active::after {
   view-transition-name: tab-active-indicator;
 }
+
+.tab-content {
+  view-transition-name: tab-content;
+}
+
+/* ::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 5s;
+} */
+
+/* ::view-transition-old(tab-content) {
+  animation: slideToLeft 0.5s;
+}
+
+::view-transition-new(tab-content) {
+  animation: slideFromRight 0.5s;
+} */

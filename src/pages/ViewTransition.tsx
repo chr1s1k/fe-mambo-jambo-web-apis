@@ -70,15 +70,26 @@ export default function ViewTransition() {
       <section className="min-h-svh">
         <h2 className="text-2xl mb-4">Tabs active indicator</h2>
         <div role="tablist" className="tabs tabs-bordered tabs-xl">
-          <Tab isActive={activeTab === 0} onClick={() => changeActiveTab(0)}>
+          <Tab id="tab-0" isActive={activeTab === 0} onClick={() => changeActiveTab(0)}>
             Tab 1
           </Tab>
-          <Tab isActive={activeTab === 1} onClick={() => changeActiveTab(1)}>
+          <Tab id="tab-1" isActive={activeTab === 1} onClick={() => changeActiveTab(1)}>
             Tab 2
           </Tab>
-          <Tab isActive={activeTab === 2} onClick={() => changeActiveTab(2)}>
+          <Tab id="tab-2" isActive={activeTab === 2} onClick={() => changeActiveTab(2)}>
             Tab 3
           </Tab>
+        </div>
+        <div
+          role="tabpanel"
+          id={`panel-${activeTab}`}
+          aria-labelledby={`tab-${activeTab}`}
+          className="tab-content block p-4 pl-0"
+        >
+          <span className="font-bold text-xl">Tab content {activeTab + 1}</span> Liquorice sweet
+          cheesecake pudding jujubes toffee cake apple pie. Tiramisu powder cake bonbon candy canes
+          topping wafer dessert muffin. Macaroon halvah pudding jelly beans lemon drops danish I
+          love.
         </div>
       </section>
       <section className="min-h-svh">
