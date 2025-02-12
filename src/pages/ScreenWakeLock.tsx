@@ -29,9 +29,7 @@ export default function ScreenWakeLock() {
     }
   }
 
-  const releaseWakeLock = async () => {
-    wakeLock.current && (await wakeLock.current.release())
-  }
+  const releaseWakeLock = async () => await wakeLock.current?.release()
 
   return (
     <>

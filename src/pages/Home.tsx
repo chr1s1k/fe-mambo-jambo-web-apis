@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom"
 
-// TODO: check light theme
-
 export default function Home() {
   return (
     <>
@@ -18,13 +16,13 @@ export default function Home() {
           </Link>
         </li>
         <li className="border-b border-solid border-gray-500">
-          <Link to="/battery-status" className="block px-2 py-3">
-            Battery Status API
+          <Link to="/view-transition" className="block px-2 py-3">
+            View Transition API
           </Link>
         </li>
         <li>
-          <Link to="/view-transition" className="block px-2 py-3">
-            View Transition API
+          <Link to="/battery-status" className="block px-2 py-3">
+            Battery Status API
           </Link>
         </li>
       </ol>
