@@ -4,6 +4,11 @@ import { ModalQR, Tab } from "../components"
 
 // generate some items
 const ITEMS = Array.from({ length: 5 }, () => ({ id: crypto.randomUUID(), justAdded: false }))
+const TAB_CONTENT = [
+  "Liquorice sweet cheesecake pudding jujubes toffee cake apple pie. Tiramisu powder cake bonbon candy canes topping wafer dessert muffin. Macaroon halvah pudding jelly beans lemon drops danish I love.",
+  "Apple pie cheesecake cake jelly shortbread chocolate cake. Macaroon gummi bears soufflé jelly-o jelly beans gingerbread dragée macaroon fruitcake. Toffee lollipop icing marzipan I love. Candy canes candy canes dessert caramels marshmallow I love pudding pie.",
+  "Dessert soufflé donut I love bonbon ice cream liquorice. Macaroon sugar plum bonbon pudding sesame snaps danish cookie jelly-o bear claw. Biscuit topping lemon drops I love powder bonbon. Chocolate icing I love bear claw soufflé donut candy canes gummi bears.",
+]
 
 export default function ViewTransition() {
   const [activeTab, setActiveTab] = useState(0)
@@ -90,10 +95,8 @@ export default function ViewTransition() {
           aria-labelledby={`tab-${activeTab}`}
           className="tab-content block p-4 pl-0"
         >
-          <span className="font-bold text-xl">Tab content {activeTab + 1}</span> Liquorice sweet
-          cheesecake pudding jujubes toffee cake apple pie. Tiramisu powder cake bonbon candy canes
-          topping wafer dessert muffin. Macaroon halvah pudding jelly beans lemon drops danish I
-          love.
+          <span className="font-bold text-xl">Tab content {activeTab + 1}</span>{" "}
+          {TAB_CONTENT[activeTab]}
         </div>
       </section>
       <section className="min-h-svh">
