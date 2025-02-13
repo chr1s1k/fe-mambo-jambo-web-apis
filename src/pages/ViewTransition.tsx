@@ -1,6 +1,6 @@
 import { MouseEvent, useRef, useState } from "react"
 import { flushSync } from "react-dom"
-import { Tab } from "../components"
+import { ModalQR, Tab } from "../components"
 
 // generate some items
 const ITEMS = Array.from({ length: 5 }, () => ({ id: crypto.randomUUID(), justAdded: false }))
@@ -66,6 +66,10 @@ export default function ViewTransition() {
     <>
       <div className="flex flex-wrap gap-2 items-center mb-6">
         <h1>View Transition API</h1>
+        <ModalQR
+          imageUrl="/assets/images/view-transition-qrcode.png"
+          url="https://fe-mambo-jambo-web-apis.vercel.app/view-transition"
+        />
       </div>
       <section className="min-h-svh">
         <h2 className="text-2xl mb-4">Tabs active indicator</h2>
