@@ -14,14 +14,7 @@ export default function ViewTransition() {
   const [activeTab, setActiveTab] = useState(0)
 
   const changeActiveTab = (idx: number) => {
-    if (!document.startViewTransition) {
-      setActiveTab(idx)
-      return
-    }
-
-    document.startViewTransition(() => {
-      flushSync(() => setActiveTab(idx))
-    })
+    setActiveTab(idx)
   }
 
   // -------------------------------------------------------------------------
