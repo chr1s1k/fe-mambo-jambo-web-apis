@@ -22,7 +22,7 @@ export default function Home() {
         </li>
         <li>
           <Link to="/battery-status" className="block px-2 py-3">
-            Battery Status API
+            Bonus
           </Link>
         </li>
       </ol>
