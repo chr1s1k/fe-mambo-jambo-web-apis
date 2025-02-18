@@ -136,10 +136,10 @@ h1 {
   animation-duration: 5s;
 } */
 
-/* ::view-transition-old(tab-content) {
+::view-transition-old(tab-content) {
   animation: slideToLeft 0.5s;
 }
 
 ::view-transition-new(tab-content) {
   animation: slideFromRight 0.5s;
-} */
+}
